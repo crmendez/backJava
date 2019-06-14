@@ -72,4 +72,5 @@ public class Cliente {
 				+ ", cod_postal=" + cod_postal + ", telefono=" + telefono + "]";
 	}
 	
+	
 }
