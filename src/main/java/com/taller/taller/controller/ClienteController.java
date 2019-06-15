@@ -45,6 +45,7 @@ public class ClienteController {
 	 }
 	
 	@PutMapping(value = "/clientes/{id}")
+	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	public ResponseEntity<Cliente> updateCliente(@PathVariable Integer id,
 			@RequestBody Cliente nuevoCliente){
 		

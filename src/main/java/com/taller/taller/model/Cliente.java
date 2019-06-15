@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "clientes")
@@ -16,6 +17,7 @@ public class Cliente {
 	private int id;
 	
 	@Column(name="nombres")
+	@NotBlank(message = "Campo nombre es obligatorio")
 	private String nombres;
 	
 	@Column(name="apellido")
