@@ -1,6 +1,8 @@
 package com.taller.taller.controller;
 
 import java.util.List;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.taller.taller.Exception.ResourceNotFoundException;
-import com.taller.taller.model.Cliente;
+import com.taller.taller.Model.Cliente;
 import com.taller.taller.repository.ClienteRepository;
 
 @RestController
@@ -37,10 +39,10 @@ public class ClienteController {
 	         return clienteRepository.findById(id).orElseThrow(()
 	        		 -> new ResourceNotFoundException("Cliente "+id+" no encontrado"));
 	         }
-	
+		
 	@PostMapping(value = "/clientes")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cliente save(@RequestBody Cliente cliente) {
+	public Cliente save(@Valid @RequestBody Cliente cliente) {
 		return clienteRepository.save(cliente);
 	 }
 	
@@ -58,8 +60,7 @@ public class ClienteController {
 			clienteRepository.save(cliente);
 			return ResponseEntity.ok(cliente);
 		}).orElseThrow(() -> new ResourceNotFoundException
-				("Cliente "+id+" no encontrado"));
-		
+				("Cliente "+id+" no encontrado"));	
 	}
 	
 	@DeleteMapping(value = "/clientes/{id}")
@@ -71,8 +72,6 @@ public class ClienteController {
 		}
         ).orElseThrow(() -> new ResourceNotFoundException
         		("Cliente "+id+" no encontrado"));
-	
     }
-	
 
 }

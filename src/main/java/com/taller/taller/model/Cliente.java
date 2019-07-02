@@ -1,4 +1,4 @@
-package com.taller.taller.model;
+package com.taller.taller.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
